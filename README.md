@@ -2,7 +2,6 @@
 A local, privacy-first hallucination detection pipeline for LLM responses. Combines a locally-running Ollama model with Wikidata knowledge graph lookups and NLP-based constraint validation to flag factual drift, unauthorized entities, and unverifiable claims — all without sending your data to the cloud.
 
 How It Works
-Each query goes through a three-stage validation pipeline:
 User Query
     │
     ▼
@@ -22,7 +21,8 @@ OllamaClient (local LLM)     → Generates a response
     │
     ▼
 Structured ValidationResult  (pass/fail + violations)
-ValidatorWhat It ChecksEntityFlags entities in the response that weren't in the original queryTopicUses semantic similarity to detect topic drift sentence-by-sentenceKnowledge GraphExtracts SPO triples from the response and verifies them against Wikidata
+    ▼
+    ValidatorWhat It ChecksEntityFlags entities in the response that weren't in the original queryTopicUses semantic similarity to detect topic drift sentence-by-sentenceKnowledge GraphExtracts SPO triples from the response and verifies them against Wikidata
 
 Features
 
@@ -32,8 +32,8 @@ Features
 🏷️ Entity constraint validation — ensures the response stays scoped to query-relevant entities
 🖥️ Streamlit UI + CLI — run it however you prefer
 
-
 Project Structure
+
 ├── app.py                      # Streamlit web UI
 ├── main.py                     # CLI entry point
 ├── config/
